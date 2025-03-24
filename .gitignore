@@ -1,2 +1,4 @@
 teste.javaconsole.sh
-code/Java_newjavaconsole.java
+compile-java.sh
+code/Java_newjavaconsole.class
+code/FileUtil.class
