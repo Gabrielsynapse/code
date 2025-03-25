@@ -1,5 +1,6 @@
 #!/bin/bash
 
+path="/sdcard/github/code"
 version="v1.0"
 opt="$1"
 java_newjavaconsole="code/Java_newjavaconsole"
@@ -14,7 +15,7 @@ function sh_newjavaconsole(){
 	print "groupId    : $1"
 	print "artifactId : $2"
 	print "version    : $3"
-	java $java_newjavaconsole "$1" "$2" "$3"
+	java $java_newjavaconsole "$PWD" "$path" "$1" "$2" "$3"
 }
 function print(){
 	echo "[code] $1"
