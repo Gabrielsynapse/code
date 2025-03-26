@@ -37,10 +37,12 @@ function ms_helper(){
 	echo "options"
 	echo "	-javaconsole"
 	echo "		Cria um novo projeto Java Console"
-	echo "		use: code -javaconsole package name_project version"
+	echo "		use: code -javaconsole [package] [name_project] [version] [dependency...]"
 	echo "			package: endereco do pacote"
 	echo "			name_project: nome do projeto"
 	echo "			version: versao do projeto"
+	echo "			dependency: dependencia do projeto"
+	echo "				groupId:artifactId:version"
 }
 
 if [ "$opt" == "-javaconsole" ]; then
