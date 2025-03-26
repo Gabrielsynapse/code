@@ -15,6 +15,20 @@ public class Java_newjavaconsole{
 	private static void print(String str){
 		System.out.println("[code] " + str);
 	}
+	private static String getDependency(String link){
+		String[] list = link.split(":");
+		String groupId    = list[0];
+		String artifactId = list[1];
+		String version    = list[2];
+		String res = "";
+		res +=
+		"<dependency>\n" +
+		"			<groupId>"+groupId+"</groupId>\n" +
+		"			<artifactId>"+artifactId+"</artifactId>\n" +
+		"			<version>"+version+"</version>\n" +
+		"		</dependency>\n";
+		return res;
+	}
 	public static void main(String[] args){
 		pwd        = args[0];
 		path       = args[1];
@@ -37,10 +51,19 @@ public class Java_newjavaconsole{
 			replaceAll("%groupId",groupId).
 			replaceAll("%artifactId",artifactId).
 			replaceAll("%version",version);
+		String dependencies = "";
 
-		print("Montando diretorio "+srcPom);
+		print("Montando diretorio "+src);
 
-		FileUtil.makeDir(pwd+"/"+artifactId);
+		FileUtil.makeDir(src);
+
+		for(int c=5;c < args.length;c++){
+			String item = args[c];
+			dependencies += getDependency(item);
+
+			print(String.format("inserindo dependencia %s ao pom.xml",item));
+		}
+		pom = pom.replaceAll("%dependencies",dependencies);
 
 		print("Escrendo arquivo pom.xml em "+pwd+"/"+artifactId+"/pom.xml");
 		FileUtil.writeFile(srcPom,pom);

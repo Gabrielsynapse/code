@@ -6,6 +6,7 @@ opt="$1"
 java_newjavaconsole="code/Java_newjavaconsole"
 
 function sh_newjavaconsole(){
+	shift
 	print "criando um novo projeto Java Console"
 	if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
 		ms_error "nao pode deixar vazio!"
@@ -15,7 +16,7 @@ function sh_newjavaconsole(){
 	print "groupId    : $1"
 	print "artifactId : $2"
 	print "version    : $3"
-	java $java_newjavaconsole "$PWD" "$path" "$1" "$2" "$3"
+	java $java_newjavaconsole "$PWD" "$path" $@ # "$1" "$2" "$3"
 }
 function print(){
 	echo "[code] $1"
@@ -43,7 +44,7 @@ function ms_helper(){
 }
 
 if [ "$opt" == "-javaconsole" ]; then
-	sh_newjavaconsole "$2" "$3" "$4"
+	sh_newjavaconsole $@ #"$2" "$3" "$4"
 elif [ "$opt" == "--help" ]; then
 	ms_helper
 elif [ "$opt" == "--version" ]; then
