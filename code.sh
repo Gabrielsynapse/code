@@ -36,7 +36,11 @@ function sh_newjar(){
 }
 function sh_newfilejava(){
 	shift
-	python3 $py_newfilejava "$path" "$PWD" "$@"
+	if [ -e ./pom.xml ]; then
+		python3 $py_newfilejava "$path" "$PWD" "$@"
+	else
+		ms_error "navegue até a pasta que contem o arquivo pom.xml"
+	fi
 }
 function print(){
 	echo "[code] $1"

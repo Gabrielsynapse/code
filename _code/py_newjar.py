@@ -9,7 +9,7 @@ pwd        = args[2];
 groupId    = args[3];
 artifactId = args[4];
 version    = args[5];
-deplist    = args[6:-1]
+deplist    = args[6:]
 
 srcPom  = pwd + "/pom.xml";
 srcJava = pwd + "/src/main/java/" + groupId.replace(".","/");
