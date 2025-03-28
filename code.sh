@@ -1,11 +1,12 @@
 #!/bin/bash
 
-path="/sdcard/github/code"
+path="/bin"
 version="v1.0"
 opt="$1"
-java_newjavaconsole="code/Java_newjavaconsole"
-java_newjar="code/Java_newjar.java"
-java_newfilejava="code/Java_newfilejava.java"
+py_newjavaconsole=$path"/_code/py_newjavaconsole.py"
+py_newjar=$path"/_code/py_newjar.py"
+py_newfilejava=$path"/_code/py_newfilejava.py"
+
 function sh_newjavaconsole(){
 	shift
 	print "criando um novo projeto Java Console"
@@ -17,7 +18,8 @@ function sh_newjavaconsole(){
 	print "groupId    : $1"
 	print "artifactId : $2"
 	print "version    : $3"
-	java $java_newjavaconsole "$PWD" "$path" $@
+
+	python3 $py_newjavaconsole "$path" "$PWD" "$@"
 }
 function sh_newjar(){
 	shift
@@ -30,10 +32,11 @@ function sh_newjar(){
 	print "groupId    : $1"
 	print "artifactId : $2"
 	print "version    : $3"
-	java $java_newjar "$PWD" "$path" $@
+	python3 $py_newjar "$path" "$PWD" "$@"
 }
 function sh_newfilejava(){
-	java $java_newfilejava"$PWD" "$path" "$1"
+	shift
+	python3 $py_newfilejava "$path" "$PWD" "$@"
 }
 function print(){
 	echo "[code] $1"
@@ -70,7 +73,7 @@ if [ "$opt" == "-javaconsole" ]; then
 elif [ "$opt" == "-jar" ]; then
 	sh_newjar $@;
 elif [ "$opt" == "-newfilejava" ]; then
-	sh_newfilejava "$2"
+	sh_newfilejava "$@"
 elif [ "$opt" == "--help" ]; then
 	ms_helper
 elif [ "$opt" == "--version" ]; then
