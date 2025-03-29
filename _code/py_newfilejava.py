@@ -18,13 +18,18 @@ template_test = util.readFile(src_template_test)
 
 #################################
 
-srcJava = pwd + "/src/main/java/" + (groupId).replace(".","/")
-srcTest = pwd + "/src/test/java/" + (groupId).replace(".","/")
-
 d1 = util.existDependency(srcPom,"org.junit.jupiter","junit-jupiter-api","5.10.2")
 d2 = util.existDependency(srcPom,"org.junit.jupiter","junit-jupiter-engine","5.10.2")
 
-for filename in filename_l:
+for filelink in filename_l:
+	groupId = filelink[0:filelink.rindex(".")]
+	filename = filelink[filelink.rindex(".")+1:]
+	srcJava = pwd + "/src/main/java/" + (filelink).replace(".","/")
+	srcTest = pwd + "/src/test/java/" + (filelink).replace(".","/")
+
+	srcJava = srcJava[0:srcJava.rindex("/")]
+	srcTest = srcTest[0:srcTest.rindex("/")]
+
 	newsrc_java = f"{srcJava}/{filename}.java"
 	newsrc_test = f"{srcTest}/{filename}Test.java"
 

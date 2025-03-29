@@ -6,6 +6,7 @@ opt="$1"
 py_newjavaconsole=$path"/_code/py_newjavaconsole.py"
 py_newjar=$path"/_code/py_newjar.py"
 py_newfilejava=$path"/_code/py_newfilejava.py"
+py_deletefilejava=$path"/_code/py_deletefilejava.py"
 
 function sh_newjavaconsole(){
 	shift
@@ -38,6 +39,14 @@ function sh_newfilejava(){
 	shift
 	if [ -e ./pom.xml ]; then
 		python3 $py_newfilejava "$path" "$PWD" "$@"
+	else
+		ms_error "navegue até a pasta que contem o arquivo pom.xml"
+	fi
+}
+function sh_deletefilejava(){
+	shift
+	if [ -e ./pom.xml ]; then
+		python3 $py_deletefilejava "$path" "$PWD" "$@"
 	else
 		ms_error "navegue até a pasta que contem o arquivo pom.xml"
 	fi
@@ -78,6 +87,8 @@ elif [ "$opt" == "-jar" ]; then
 	sh_newjar $@;
 elif [ "$opt" == "-newfilejava" ]; then
 	sh_newfilejava "$@"
+elif [ "$opt" == "-deletefilejava" ]; then
+	sh_deletefilejava "$@"
 elif [ "$opt" == "--help" ]; then
 	ms_helper
 elif [ "$opt" == "--version" ]; then
