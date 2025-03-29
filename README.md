@@ -78,31 +78,30 @@ Deleta um ou varios arquivo(s) java ou pasta
 Para instalar o comando code, siga os passos abaixo:
 
 ## Atenção
-1. O comando será instalado em `/bin`
+### 1. O comando será instalado em `/bin`
 
 ## Instalando o comando
-1. **Abra o terminal e execute o seguinte comando para clonar o repositório:**
-`git clone git@github.com:Gabrielsynapse/code.git`
+### 1. Abra o terminal e execute o seguinte comando para clonar o repositório:
+	git clone git@github.com:Gabrielsynapse/code.git
 
-2. **Navegue até a pasta:**
-`cd code`
+### 2. Navegue até a pasta:
+	cd code
 
-3. **de permisão para o script de instalação:**
-`chmod +xrw install.sh`
+### 3. de permisão para o script de instalação:
+	chmod +xrw install.sh
 
-4. **Execute o script de instalação:**
-`./install.sh`
+### 4. Execute o script de instalação:
+	./install.sh
 
-5. **Se o passo anterior mostrar permisão não definida execute:**
-`bash install.sh`
+### 5. Se o passo anterior mostrar permisão não definida execute:
+	bash install.sh
 
-6. **Por fim digite:**
-`code --version`
+### 6. Por fim digite:
+	code --version
 
-7. **Se retornar comando não encontrado, provávelmente o diretorio `/bin` não está na variavél de ambiente PATH. para inserir digite:**
-`export PATH+=":/bin"`
+### 7. Se retornar comando não encontrado, provávelmente o diretorio `/bin` não está na variavél de ambiente PATH. para inserir digite:
+	export PATH+=":/bin"
 
-8. **insira essa linha em um arquivo que faz parte da inicialização do sistema.**
+### 8. insira essa linha em um arquivo que faz parte da inicialização do sistema.
 
 ## para desinstalar o comando siga os passos anteriores usando o arquivo de desinstação *unistall.sh*
-
