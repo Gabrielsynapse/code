@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-path="/bin"
+path="$PREFIX/bin"
 version="v1.0"
 opt="$1"
 py_newjavaconsole=$path"/_code/py_newjavaconsole.py"
@@ -8,7 +8,7 @@ py_newjar=$path"/_code/py_newjar.py"
 py_newfilejava=$path"/_code/py_newfilejava.py"
 py_deletefilejava=$path"/_code/py_deletefilejava.py"
 
-function sh_newjavaconsole(){
+sh_newjavaconsole () {
 	shift
 	print "criando um novo projeto Java Console"
 	if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
@@ -22,7 +22,7 @@ function sh_newjavaconsole(){
 
 	python3 $py_newjavaconsole "$path" "$PWD" "$@"
 }
-function sh_newjar(){
+sh_newjar () {
 	shift
 	print "criando um novo projeto Jar"
 	if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
@@ -35,7 +35,7 @@ function sh_newjar(){
 	print "version    : $3"
 	python3 $py_newjar "$path" "$PWD" "$@"
 }
-function sh_newfilejava(){
+sh_newfilejava () {
 	shift
 	if [ -e ./pom.xml ]; then
 		python3 $py_newfilejava "$path" "$PWD" "$@"
@@ -43,7 +43,7 @@ function sh_newfilejava(){
 		ms_error "navegue até a pasta que contem o arquivo pom.xml"
 	fi
 }
-function sh_deletefilejava(){
+sh_deletefilejava () {
 	shift
 	if [ -e ./pom.xml ]; then
 		python3 $py_deletefilejava "$path" "$PWD" "$@"
@@ -51,23 +51,23 @@ function sh_deletefilejava(){
 		ms_error "navegue até a pasta que contem o arquivo pom.xml"
 	fi
 }
-function print(){
+print () {
 	echo "[code] $1"
 }
 
-function ms_error(){
+ms_error () {
 	echo "[code error] $1"
 }
 
-function ms_usage(){
+ms_usage () {
 	echo "Usage: code [-options] [args...]"
 }
 
-function ms_version(){
+ms_version () {
 	echo "code version: $version"
 }
 
-function ms_helper(){
+ms_helper () {
 	ms_usage
 	ms_version
 	echo "options"
@@ -81,17 +81,17 @@ function ms_helper(){
 	echo "				groupId:artifactId:version"
 }
 
-if [ "$opt" == "-javaconsole" ]; then
+if [ "$opt" = "-javaconsole" ]; then
 	sh_newjavaconsole $@;
-elif [ "$opt" == "-jar" ]; then
+elif [ "$opt" = "-jar" ]; then
 	sh_newjar $@;
-elif [ "$opt" == "-newfilejava" ]; then
+elif [ "$opt" = "-newfilejava" ]; then
 	sh_newfilejava "$@"
-elif [ "$opt" == "-deletefilejava" ]; then
+elif [ "$opt" = "-deletefilejava" ]; then
 	sh_deletefilejava "$@"
-elif [ "$opt" == "--help" ]; then
+elif [ "$opt" = "--help" ]; then
 	ms_helper
-elif [ "$opt" == "--version" ]; then
+elif [ "$opt" = "--version" ]; then
 	ms_version
 else
 	ms_usage

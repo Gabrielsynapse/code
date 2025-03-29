@@ -1,14 +1,22 @@
 # Comando `code`
 
-## Usage: `code` [-options] [args...]
+## Usage: `code [-options] [args...]`
 
 Este comando oferece funcionalidades para auxiliar no desenvolvimento, com opções específicas para projetos Maven.
 Este comando foi feito para linux.
 
 ### Considerações importantes
+
 * Primeiro crie uma pasta com o nome do projeto.
 * navegue até a pasta usando `cd`.
 * as opções `-newfilejava` e `-deletefilejava` não funcionam se o projeto nao for criado antes nem se não tiver pom.xml no diretório atual.
+* todos os scripts contidos nesse repositório usa o shebang /bin/sh
+
+### Dependência
+Para que este comando funcione algumas instalações são nescessárias se não tiver.
+* python3.12.9+
+* maven3.9.9+
+* openjdk-21+
 
 ### Opções
 
@@ -100,7 +108,7 @@ Para instalar o comando code, siga os passos abaixo:
 	code --version
 
 ### 7. Se retornar comando não encontrado, provávelmente o diretorio `/bin` não está na variavél de ambiente PATH. para inserir digite:
-	export PATH+=":/bin"
+	export PATH+=":$PREFIX/bin"
 
 ### 8. insira essa linha em um arquivo que faz parte da inicialização do sistema.
 

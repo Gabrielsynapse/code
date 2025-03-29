@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-function print(){
+print () {
 	echo "[info] $1"
 }
 
@@ -10,25 +10,25 @@ print "compilando shell.sh e deletando arquivos desnecessario"
 
 shc -f "code.sh" -o "code" && rm "code.sh."*
 
-print "movendo code para /bin"
+print "movendo code para $PREFIX/bin"
 
-mv "code" "/bin/code"
+mv "code" "$PREFIX/bin/code"
 
 print "adcionando permissao para code"
 
-chmod +xrw /bin/code
+chmod +xrw "$PREFIX/bin/code"
 
 print "copiando pasta de binarios"
 
-cp "_code" -r "/bin"
+cp "./_code" -r "$PREFIX/bin"
 
 print "adcionando permisao para o diretorio _code"
 
-chmod 700 "/bin/_code"
-chmod +xwr "/bin/_code"*
+chmod 700 "$PREFIX/bin/_code"
+chmod +xwr "$PREFIX/bin/_code"*
 
 print "deletando arquivos .java em /bin/_code"
-rm -rf /bin/_code/*.java
+rm -rf $PREFIX/bin/_code/*.java
 
 print "comando instalado com sucesso!"
 
