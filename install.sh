@@ -3,6 +3,18 @@
 print () {
 	echo "[info] $1"
 }
+if [ "$( which python )" = "" ]; then
+	print "instale o python"
+	exit
+fi
+if [ "$( which mvn )" = "" ]; then
+	print "instale o maven"
+	exit
+fi
+if [ "$( which java )" = "" ]; then
+	print "instale o java"
+	exit
+fi
 
 print "instalando code"
 
